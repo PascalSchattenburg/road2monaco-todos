@@ -1,0 +1,36 @@
+# 👉 IntelliJ IDEA-Projektdateien
+.idea/
+*.iml
+out/
+
+# 👉 Editor-/Systemdateien
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# 👉 IntelliJ spezifische Komponenten
+/shelf/
+/workspace.xml
+/httpRequests/
+/mavenHomeManager.xml
+/dataSources/
+/dataSources.local.xml
+
+# 👉 Build-/Kompilat-Dateien (z. B. bei Java)
+*.class
+
+# 👉 Node.js/Web-Projekt (für später)
+node_modules/
+dist/
+build/
+.env
+
+# 👉 Shell/Temporäres
+*.swp
+*.bak
+*.tmp
+*.log
+
+# 👉 VS Code Support (falls im Team genutzt)
+.vscode/
