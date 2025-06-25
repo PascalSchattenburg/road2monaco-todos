@@ -11,10 +11,23 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(todos => {
             todos.forEach(todo => {
                 const li = document.createElement('li');
-                li.textContent = `${todo.owner}: ${todo.text}`;
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.checked = todo.done;
+
+                checkbox.addEventListener('change', () => {
+                    li.style.textDecoration = checkbox.checked ? 'line-through' : 'none';
+                });
+
+                const text = document.createTextNode(` ${todo.owner}: ${todo.text}`);
+                li.appendChild(checkbox);
+                li.appendChild(text);
+
                 if (todo.done) {
                     li.style.textDecoration = 'line-through';
                 }
+
                 list.appendChild(li);
             });
         })
