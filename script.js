@@ -12,22 +12,29 @@ document.addEventListener("DOMContentLoaded", () => {
             todos.forEach(todo => {
                 const li = document.createElement('li');
 
+                const label = document.createElement('label');
+                label.style.display = 'flex';
+                label.style.alignItems = 'center';
+                label.style.gap = '10px';
+
                 const checkbox = document.createElement('input');
                 checkbox.type = 'checkbox';
                 checkbox.checked = todo.done;
 
-                checkbox.addEventListener('change', () => {
-                    li.style.textDecoration = checkbox.checked ? 'line-through' : 'none';
-                });
-
-                const text = document.createTextNode(` ${todo.owner}: ${todo.text}`);
-                li.appendChild(checkbox);
-                li.appendChild(text);
+                const span = document.createElement('span');
+                span.textContent = `${todo.owner}: ${todo.text}`;
 
                 if (todo.done) {
-                    li.style.textDecoration = 'line-through';
+                    span.style.textDecoration = 'line-through';
                 }
 
+                checkbox.addEventListener('change', () => {
+                    span.style.textDecoration = checkbox.checked ? 'line-through' : 'none';
+                });
+
+                label.appendChild(checkbox);
+                label.appendChild(span);
+                li.appendChild(label);
                 list.appendChild(li);
             });
         })
