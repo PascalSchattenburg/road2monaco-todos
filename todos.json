@@ -13,5 +13,10 @@
     "owner": "Pupi",
     "text": " geh nach hause",
     "done": false
+  },
+  {
+    "owner": "Pascal",
+    "text": "bist du fertig?",
+    "done": false
   }
 ]
