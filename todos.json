@@ -16,5 +16,11 @@
     "text": "",
     "done": false,
     "important": false
+  },
+  {
+    "owner": "pascal",
+    "text": "ja ok",
+    "done": false,
+    "important": true
   }
 ]
