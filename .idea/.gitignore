@@ -1,6 +1,7 @@
 # 👉 IntelliJ IDEA-Projektdateien
 .idea/
 *.iml
+*.xml
 out/
 
 # 👉 Editor-/Systemdateien
