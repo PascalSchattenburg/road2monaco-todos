@@ -9,33 +9,49 @@ document.addEventListener("DOMContentLoaded", () => {
             return response.json();
         })
         .then(todos => {
+            const grouped = {};
+
             todos.forEach(todo => {
-                const li = document.createElement('li');
-
-                const label = document.createElement('label');
-                label.style.display = 'flex';
-                label.style.alignItems = 'center';
-                label.style.gap = '10px';
-
-                const checkbox = document.createElement('input');
-                checkbox.type = 'checkbox';
-                checkbox.checked = todo.done;
-
-                const span = document.createElement('span');
-                span.textContent = `${todo.owner}: ${todo.text}`;
-
-                if (todo.done) {
-                    span.style.textDecoration = 'line-through';
+                if (!grouped[todo.owner]) {
+                    grouped[todo.owner] = [];
                 }
+                grouped[todo.owner].push(todo);
+            });
 
-                checkbox.addEventListener('change', () => {
-                    span.style.textDecoration = checkbox.checked ? 'line-through' : 'none';
+            Object.keys(grouped).forEach(owner => {
+                const ownerHeader = document.createElement('h2');
+                ownerHeader.textContent = owner;
+                list.appendChild(ownerHeader);
+
+                grouped[owner].forEach(todo => {
+                    const li = document.createElement('li');
+
+                    const label = document.createElement('label');
+                    label.style.display = 'flex';
+                    label.style.alignItems = 'center';
+                    label.style.gap = '10px';
+
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.checked = todo.done;
+
+                    const priorityMarks = "!".repeat(Math.min(todo.priority || 0, 3));
+                    const span = document.createElement('span');
+                    span.textContent = `${priorityMarks} ${todo.text}`;
+
+                    if (todo.done) {
+                        span.style.textDecoration = 'line-through';
+                    }
+
+                    checkbox.addEventListener('change', () => {
+                        span.style.textDecoration = checkbox.checked ? 'line-through' : 'none';
+                    });
+
+                    label.appendChild(checkbox);
+                    label.appendChild(span);
+                    li.appendChild(label);
+                    list.appendChild(li);
                 });
-
-                label.appendChild(checkbox);
-                label.appendChild(span);
-                li.appendChild(label);
-                list.appendChild(li);
             });
         })
         .catch(error => {
