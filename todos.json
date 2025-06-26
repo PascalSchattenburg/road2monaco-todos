@@ -1,12 +1,6 @@
 [
   {
     "owner": "p",
-    "text": "p",
-    "done": false,
-    "important": false
-  },
-  {
-    "owner": "p",
     "text": "l",
     "done": false,
     "important": true
