@@ -36,9 +36,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     checkbox.checked = todo.done;
 
                     const span = document.createElement('span');
-                    span.textContent = `${todo.owner}: ${todo.text}`;
+                    const prefix = todo.important ? "💰 " : "";
+                    span.textContent = `${prefix}${todo.owner}: ${todo.text}`;
                     if (todo.done) {
                         span.style.textDecoration = 'line-through';
+                    }
+                    if (todo.important) {
+                        li.classList.add("important");
                     }
                     checkbox.addEventListener('change', () => {
                         span.style.textDecoration = checkbox.checked ? 'line-through' : 'none';

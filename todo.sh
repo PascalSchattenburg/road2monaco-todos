@@ -15,17 +15,27 @@ fi
 
 # Parameter prüfen
 if [ "$#" -lt 2 ]; then
-  echo "Usage: ./todo.sh <owner> <todo text>"
+  echo "Usage: ./todo.sh <owner> <todo text> [wichtig]"
   exit 1
 fi
 
 OWNER="$1"
 shift
-TEXT="$*"
+
+ARGS=("$@")
+LAST="${ARGS[${#ARGS[@]}-1]}"
+
+IMPORTANT=false
+if [[ "$LAST" == "wichtig" ]]; then
+  IMPORTANT=true
+  unset ARGS[${#ARGS[@]}-1]
+fi
+
+TEXT="${ARGS[*]}"
 TEXT=$(echo "$TEXT" | sed 's/ *$//')
 
 # JSON-Eintrag vorbereiten
-NEW_ENTRY="{\"owner\": \"$OWNER\", \"text\": \"$TEXT\", \"done\": false}"
+NEW_ENTRY="{\"owner\": \"$OWNER\", \"text\": \"$TEXT\", \"done\": false, \"important\": $IMPORTANT}"
 
 # Wenn Datei nicht existiert, initialisiere sie
 if [ ! -f "$TODO_FILE" ]; then
