@@ -81,5 +81,11 @@
     "text": "",
     "done": false,
     "priority": 1
+  },
+  {
+    "owner": "Pupi",
+    "text": "schneller ./todo.sh Pascal schnellre ./todo.sh Pascal mach das schneller !",
+    "done": false,
+    "priority": 0
   }
 ]
