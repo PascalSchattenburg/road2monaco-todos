@@ -23,5 +23,10 @@
     "owner": "Pupi",
     "text": "geh einkaufne",
     "done": false
+  },
+  {
+    "owner": "Pascal",
+    "text": "geh nachhause",
+    "done": false
   }
 ]
