@@ -10,5 +10,11 @@
     "text": "Pascal Schell ./todo.sh Pascal schneller ./remove.sh !",
     "done": false,
     "priority": 0
+  },
+  {
+    "owner": "Pupi",
+    "text": "Schnelll ./todo.sh Pascal Schell ./todo.sh Pascal schneller ./remove.sh !!",
+    "done": false,
+    "priority": 0
   }
 ]
