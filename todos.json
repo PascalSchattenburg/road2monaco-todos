@@ -28,5 +28,11 @@
     "text": "Schenller ./todo.sh Pascal Schneller ./todo.sh Pupi Schnelll ./todo.sh Pascal Schell ./todo.sh Pascal schneller ./remove.sh",
     "done": false,
     "priority": 3
+  },
+  {
+    "owner": "Pupi",
+    "text": "hallop",
+    "done": false,
+    "priority": 0
   }
 ]
