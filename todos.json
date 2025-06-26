@@ -1,11 +1,5 @@
 [
   {
-    "owner": "Pascal",
-    "text": "schneller ./remove.sh !",
-    "done": false,
-    "priority": 0
-  },
-  {
     "owner": "",
     "text": "Pascal Schell ./todo.sh Pascal schneller ./remove.sh !",
     "done": false,
