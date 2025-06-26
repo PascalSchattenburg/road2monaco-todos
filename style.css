@@ -39,3 +39,7 @@ li.important {
     background-color: #fff8e6;
     border-left: 5px solid gold;
 }
+
+li.important span {
+    font-weight: bold;
+}

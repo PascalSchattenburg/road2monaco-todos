@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     const span = document.createElement('span');
                     const prefix = todo.important ? "💰 " : "";
-                    span.textContent = `${prefix}${todo.owner}: ${todo.text}`;
+                    span.textContent = `${prefix}${todo.text}`;
                     if (todo.done) {
                         span.style.textDecoration = 'line-through';
                     }
