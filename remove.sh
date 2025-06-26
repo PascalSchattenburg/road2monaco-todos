@@ -16,7 +16,7 @@ if [ ! -f "$TODO_FILE" ]; then
   exit 1
 fi
 
-# Todo-Liste anzeigen
+# Aktuelle Liste anzeigen
 echo "Aktuelle Todos:"
 jq -c '.[]' "$TODO_FILE" | nl -w2 -s'. ' | while read -r line; do
   number=$(echo "$line" | cut -d. -f1)
@@ -26,27 +26,33 @@ jq -c '.[]' "$TODO_FILE" | nl -w2 -s'. ' | while read -r line; do
   echo "[$number] $owner: $text"
 done
 
-# Auswahl abfragen
-echo ""
-read -p "Welche Nummer möchtest du löschen? " ID
-
-if ! [[ "$ID" =~ ^[0-9]+$ ]]; then
-  echo "Ungültige Eingabe."
-  exit 1
+# Prüfen, ob Argumente übergeben wurden
+if [ "$#" -eq 0 ]; then
+  echo ""
+  read -p "Welche Nummer(n) möchtest du löschen (z. B. 1 3 5)? " -a IDS
+else
+  IDS=("$@")
 fi
 
-INDEX=$((ID - 1))
-
-# Element löschen
+# Sortiere und lösche rückwärts
 TMP_FILE=$(mktemp)
-jq "del(.[$INDEX])" "$TODO_FILE" > "$TMP_FILE" && mv "$TMP_FILE" "$TODO_FILE"
+cp "$TODO_FILE" "$TMP_FILE"
 
-echo "Eintrag [$ID] wurde entfernt."
+for ID in $(printf '%s\n' "${IDS[@]}" | sort -nr); do
+  if [[ "$ID" =~ ^[0-9]+$ ]]; then
+    INDEX=$((ID - 1))
+    jq "del(.[$INDEX])" "$TMP_FILE" > "${TMP_FILE}.tmp" && mv "${TMP_FILE}.tmp" "$TMP_FILE"
+    echo "✔ [$ID] Eintrag gelöscht"
+  else
+    echo "❌ Ungültige Nummer: $ID"
+  fi
+done
 
-# Git-Änderung
+mv "$TMP_FILE" "$TODO_FILE"
+
+# Git-Commit und Push
 git config user.name "$GIT_USER"
 git config user.email "$GIT_EMAIL"
-
 git add "$TODO_FILE"
-git commit -m "removed todo [$ID]"
+git commit -m "removed todos: ${IDS[*]}"
 git push
