@@ -29,9 +29,28 @@ done
 # Prüfen, ob Argumente übergeben wurden
 if [ "$#" -eq 0 ]; then
   echo ""
-  read -p "Welche Nummer(n) möchtest du löschen (z. B. 1 3 5)? " -a IDS
+  read -p "Welche Nummer(n) möchtest du löschen (z. B. 1 3 5) um alle zu löschen (alle)? " -a IDS
+
 else
   IDS=("$@")
+fi
+
+# "alle" als Argument erlaubt das Löschen aller Einträge
+if [[ "${#IDS[@]}" -eq 1 && "${IDS[0]}" == "alle" ]]; then
+  read -p "⚠️  Bist du sicher, dass du ALLE Todos löschen willst? (y/n): " CONFIRM
+  if [[ "$CONFIRM" == "y" ]]; then
+    echo "[]" > "$TODO_FILE"
+    git config user.name "$GIT_USER"
+    git config user.email "$GIT_EMAIL"
+    git add "$TODO_FILE"
+    git commit -m "removed all todos"
+    git push
+    echo "✔ Alle Todos wurden gelöscht."
+    exit 0
+  else
+    echo "❌ Abgebrochen."
+    exit 1
+  fi
 fi
 
 # Sortiere und lösche rückwärts

@@ -35,18 +35,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     checkbox.type = 'checkbox';
                     checkbox.checked = todo.done;
 
-                    const priorityMarks = "!".repeat(Math.min(todo.priority || 0, 3));
                     const span = document.createElement('span');
-                    span.textContent = `${priorityMarks} ${todo.text}`;
-
+                    span.textContent = `${todo.owner}: ${todo.text}`;
                     if (todo.done) {
                         span.style.textDecoration = 'line-through';
                     }
-
                     checkbox.addEventListener('change', () => {
                         span.style.textDecoration = checkbox.checked ? 'line-through' : 'none';
                     });
-
                     label.appendChild(checkbox);
                     label.appendChild(span);
                     li.appendChild(label);
