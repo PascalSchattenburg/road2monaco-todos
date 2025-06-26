@@ -10,5 +10,11 @@
     "text": "l",
     "done": false,
     "important": true
+  },
+  {
+    "owner": "a",
+    "text": "",
+    "done": false,
+    "important": true
   }
 ]
