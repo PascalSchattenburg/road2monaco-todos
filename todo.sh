@@ -15,16 +15,34 @@ fi
 
 # Parameter prüfen
 if [ "$#" -lt 2 ]; then
-  echo "Usage: ./todo.sh <owner> <todo text>"
+  echo "Usage: ./todo.sh <owner> <todo text> [! or !! or !!!]"
   exit 1
 fi
 
 OWNER="$1"
 shift
-TEXT="$*"
+
+# Prüfen auf Prioritätszeichen am Ende
+PRIORITY=0
+LAST="$*"
+if [[ "$LAST" =~ \!\!\!$ ]]; then
+  PRIORITY=3
+  TEXT="${LAST::-3}"
+elif [[ "$LAST" =~ \!\!$ ]]; then
+  PRIORITY=2
+  TEXT="${LAST::-2}"
+elif [[ "$LAST" =~ \!$ ]]; then
+  PRIORITY=1
+  TEXT="${LAST::-1}"
+else
+  TEXT="$LAST"
+fi
+
+# Leerzeichen am Ende entfernen
+TEXT=$(echo "$TEXT" | sed 's/ *$//')
 
 # JSON-Eintrag vorbereiten
-NEW_ENTRY="{\"owner\": \"$OWNER\", \"text\": \"$TEXT\", \"done\": false}"
+NEW_ENTRY="{\"owner\": \"$OWNER\", \"text\": \"$TEXT\", \"done\": false, \"priority\": $PRIORITY}"
 
 # Wenn Datei nicht existiert, initialisiere sie
 if [ ! -f "$TODO_FILE" ]; then
