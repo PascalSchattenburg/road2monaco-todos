@@ -34,5 +34,11 @@
     "text": "hallop",
     "done": false,
     "priority": 0
+  },
+  {
+    "owner": "pupi",
+    "text": "Hallo ./todo.sh Pupi hallop",
+    "done": false,
+    "priority": 0
   }
 ]
