@@ -16,5 +16,11 @@
     "text": "geh weg",
     "done": false,
     "important": false
+  },
+  {
+    "owner": "",
+    "text": "",
+    "done": false,
+    "important": false
   }
 ]
