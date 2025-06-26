@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "owner": "Pascal",
+    "text": "schneller ./remove.sh !",
+    "done": false,
+    "priority": 0
+  }
+]
