@@ -33,5 +33,11 @@
     "owner": "Pupi",
     "text": "echt mach ma schneller",
     "done": false
+  },
+  {
+    "owner": "Pascal",
+    "text": "",
+    "done": false,
+    "priority": 1
   }
 ]
