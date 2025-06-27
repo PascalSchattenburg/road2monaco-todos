@@ -34,5 +34,11 @@
     "text": "einkaufen gehen",
     "done": false,
     "important": false
+  },
+  {
+    "owner": "Pascal",
+    "text": "einkaufen gehen",
+    "done": false,
+    "important": false
   }
 ]
