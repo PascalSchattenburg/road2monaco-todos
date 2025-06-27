@@ -40,5 +40,11 @@
     "text": "Geh mal arbeiten",
     "done": false,
     "important": false
+  },
+  {
+    "owner": "2",
+    "text": "Testee",
+    "done": false,
+    "important": true
   }
 ]
