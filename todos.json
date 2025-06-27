@@ -40,5 +40,11 @@
     "text": "peer",
     "done": false,
     "important": true
+  },
+  {
+    "owner": "Pupi",
+    "text": "Geh mal arbeiten",
+    "done": false,
+    "important": false
   }
 ]
