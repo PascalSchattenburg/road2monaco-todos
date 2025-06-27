@@ -19,9 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             Object.keys(grouped).forEach(owner => {
-                const ownerHeader = document.createElement('h2');
-                ownerHeader.textContent = owner;
-                list.appendChild(ownerHeader);
+                const ownerBox = document.createElement('div');
+                ownerBox.classList.add('owner-box');
+                ownerBox.textContent = owner;
+                list.appendChild(ownerBox);
 
                 grouped[owner].forEach(todo => {
                     const li = document.createElement('li');
