@@ -26,14 +26,26 @@ jq -c '.[]' "$TODO_FILE" | nl -w2 -s'. ' | while read -r line; do
   echo "[$number] $owner: $text"
 done
 
-# Prüfen, ob Argumente übergeben wurden
 if [ "$#" -eq 0 ]; then
   echo ""
-  read -p "Welche Nummer(n) möchtest du löschen (z. B. 1 3 5) um alle zu löschen (alle)? " -a IDS
-
+  read -p "Welche Nummer(n) möchtest du löschen (z. B. 1 3 5 oder 1-8) um alle zu löschen (alle)? " -a RAW_INPUT
 else
-  IDS=("$@")
+  RAW_INPUT=("$@")
 fi
+
+IDS_EXPANDED=()
+for ARG in "${RAW_INPUT[@]}"; do
+  if [[ "$ARG" =~ ^([0-9]+)-([0-9]+)$ ]]; then
+    START="${BASH_REMATCH[1]}"
+    END="${BASH_REMATCH[2]}"
+    for ((i=START; i<=END; i++)); do
+      IDS_EXPANDED+=("$i")
+    done
+  else
+    IDS_EXPANDED+=("$ARG")
+  fi
+done
+IDS=("${IDS_EXPANDED[@]}")
 
 # "alle" als Argument erlaubt das Löschen aller Einträge
 if [[ "${#IDS[@]}" -eq 1 && "${IDS[0]}" == "alle" ]]; then
