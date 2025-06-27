@@ -16,5 +16,11 @@
     "text": "asd",
     "done": false,
     "important": false
+  },
+  {
+    "owner": "Pascal",
+    "text": "todo app fertgi machen",
+    "done": false,
+    "important": true
   }
 ]
