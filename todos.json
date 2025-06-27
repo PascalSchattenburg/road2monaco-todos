@@ -1,6 +1,24 @@
 [
   {
     "owner": "Pascal",
+    "text": "todo app fertgi machen",
+    "done": false,
+    "important": true
+  },
+  {
+    "owner": "Pascal",
+    "text": "Migrationsamt bis 16.00",
+    "done": false,
+    "important": true
+  },
+  {
+    "owner": "Pascal",
+    "text": "einfach klarkommen bitte",
+    "done": false,
+    "important": true
+  },
+  {
+    "owner": "Pascal",
     "text": "sport",
     "done": false,
     "important": false
@@ -22,23 +40,5 @@
     "text": "peer",
     "done": false,
     "important": true
-  },
-  {
-    "owner": "Pascal",
-    "text": "peer",
-    "done": false,
-    "important": false
-  },
-  {
-    "owner": "Pupi",
-    "text": "einkaufen gehen",
-    "done": false,
-    "important": false
-  },
-  {
-    "owner": "Pascal",
-    "text": "einkaufen gehen",
-    "done": false,
-    "important": false
   }
 ]
