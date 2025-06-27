@@ -18,7 +18,7 @@ fi
 echo "Was möchtest du tun?"
 echo "1) Neues ToDo hinzufügen"
 echo "2) Nutzer entfernen"
-echo "4) Abbrechen"
+echo "3) Abbrechen"
 read -p "Auswahl: " CHOICE
 
 if [[ "$CHOICE" == "1" ]]; then
@@ -67,21 +67,8 @@ elif [[ "$CHOICE" == "2" ]]; then
   git push
 
 elif [[ "$CHOICE" == "3" ]]; then
-  echo "— Eingetragene Nutzer —"
-  jq -r '.[].owner' "$TODO_FILE" | sort -u | nl
-  read -p "Welchen Nutzer möchtest du entfernen? (Name eingeben): " DELETE_USER
-
-  TMP_FILE=$(mktemp)
-  jq "del(.[] | select(.owner == \"$DELETE_USER\"))" "$TODO_FILE" > "$TMP_FILE" && mv "$TMP_FILE" "$TODO_FILE"
-
-  echo "🗑️ Alle Todos von '$DELETE_USER' wurden gelöscht."
-
-  # Git Push
-  git config user.name "$GIT_USER"
-  git config user.email "$GIT_EMAIL"
-  git add "$TODO_FILE"
-  git commit -m "remove todos by: $DELETE_USER"
-  git push
+  echo "Abgebrochen."
+  exit 0
 
 else
   echo "Abgebrochen."
