@@ -22,5 +22,11 @@
     "text": "sport",
     "done": false,
     "important": false
+  },
+  {
+    "owner": "Pascal",
+    "text": "Geld machen",
+    "done": false,
+    "important": true
   }
 ]
