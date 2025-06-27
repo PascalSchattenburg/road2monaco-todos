@@ -28,5 +28,11 @@
     "text": "Geld machen",
     "done": false,
     "important": true
+  },
+  {
+    "owner": "Pascal",
+    "text": "mehr machen",
+    "done": false,
+    "important": true
   }
 ]
