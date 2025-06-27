@@ -46,5 +46,11 @@
     "text": "peer",
     "done": false,
     "important": false
+  },
+  {
+    "owner": "Pupi",
+    "text": "einkaufen gehen",
+    "done": false,
+    "important": false
   }
 ]
