@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "owner": "Pascal",
+    "text": "shoppen",
+    "done": false,
+    "important": false
+  }
+]
