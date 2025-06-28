@@ -4,5 +4,11 @@
     "text": "shoppen",
     "done": false,
     "important": false
+  },
+  {
+    "owner": "Pascal",
+    "text": "gym",
+    "done": false,
+    "important": false
   }
 ]
