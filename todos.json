@@ -22,5 +22,11 @@
     "text": "machen",
     "done": false,
     "important": false
+  },
+  {
+    "owner": "Pascal",
+    "text": "arbeiten",
+    "done": false,
+    "important": false
   }
 ]
